@@ -13,10 +13,10 @@
     }
 
     <ul>
-        @foreach (var menu in Model)
+        @foreach (var item in Model)
         {
 
-           <li><a asp-controller="Menu" asp-action="Index" asp-route-id="@menu.MenuID"> @menu.Menu.Name </a></li>
+           <li><a asp-controller="Menu" asp-action="Index" asp-route-id="@item.MenuID"> @item.Menu.Name </a></li>
         }
     </ul>
 <p>

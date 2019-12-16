@@ -21,13 +21,8 @@ namespace CheeseMVC.ViewModels
         public int CategoryID { get; set; }
         public List<SelectListItem> Categories { get; set; }
 
-        //public CheeseType Type { get; set; }
-
-        //public List<SelectListItem> CheeseTypes { get; set; }
-
         public AddCheeseViewModel(IEnumerable<CheeseCategory> categories)
         {
-            //CheeseCategories = new List<SelectListItem>();
             foreach (CheeseCategory category in categories)
             {
                 Categories.Add(new SelectListItem

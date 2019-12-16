@@ -8,8 +8,10 @@ namespace CheeseMVC.ViewModels
 {
     public class AddMenuViewModel
     {
-        [Required]
+        [Required (ErrorMessage ="Menu Name cannot be empty")]
         [Display (Name ="Menu Name")]
         public string Name { get; set; }
+        public AddMenuViewModel() 
+        { }
     }
 }

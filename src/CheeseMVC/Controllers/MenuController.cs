@@ -6,6 +6,7 @@ using CheeseMVC.Data;
 using CheeseMVC.Models;
 using CheeseMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CheeseMVC.Controllers
 {
@@ -19,13 +20,14 @@ namespace CheeseMVC.Controllers
         }
         public IActionResult Index()
         {
-            IList<CheeseMenu> myMenus = context.CheeseMenu.ToList();
-            return View(myMenus);
+            IList<CheeseMenu> allMenus = context.CheeseMenus.ToList();
+            return View(allMenus);
         }
 
         public IActionResult Add()
         {
-            return View();
+            AddMenuViewModel addMenuViewModel = new AddMenuViewModel();
+            return View(addMenuViewModel);
         }
         [HttpPost]
         public IActionResult Add(AddMenuViewModel addMenuViewModel)
@@ -36,7 +38,7 @@ namespace CheeseMVC.Controllers
                     {
                     Name = addMenuViewModel.Name
                     };
-                context.Menu.Add(newMenu);
+                context.Menus.Add(newMenu);
                 context.SaveChanges();
                 return Redirect("/Menu/ViewMenu" + newMenu.ID);
             }
@@ -45,9 +47,9 @@ namespace CheeseMVC.Controllers
 
         public IActionResult ViewMenu(int id)
         {
-            Menu menuToDisplay = context.Menu.Single(m => m.ID == id);
+            Menu menuToDisplay = context.Menus.Single(m => m.ID == id);
             List<CheeseMenu> items = context
-                .CheeseMenu
+                .CheeseMenus
                 .Include(item =>item.Cheese)
                 .Where(cm => cm.MenuID == id)
                 .ToList();

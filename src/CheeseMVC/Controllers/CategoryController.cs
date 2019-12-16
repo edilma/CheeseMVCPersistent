@@ -41,9 +41,6 @@ using CheeseMVC.ViewModels;
                 context.Categories.Add(newCategory);
                 context.SaveChanges();
                 return Redirect("/Category");
-
-
-
             }
             return View(addCategoryViewModel);
 
