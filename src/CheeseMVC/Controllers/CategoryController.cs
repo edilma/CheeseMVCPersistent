@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using CheeseMVC.Models;
 using CheeseMVC.ViewModels;
 
-namespace CheeseMVC.Controllers
+ namespace CheeseMVC.Controllers
 {
     public class CategoryController : Controller
     {

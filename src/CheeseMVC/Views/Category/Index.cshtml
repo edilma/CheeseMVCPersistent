@@ -13,10 +13,11 @@
         We have not categories yet
     </p>
 }
+<!-- Can I use the word cheese?  What happens if I change it to category?-->
 <ul>
-    @foreach (var cheese in Model)
+    @foreach (var category in Model)
     {
-        <li>@cheese.Name</li>
+        <li>@category.Name</li>
     }
 </ul>
 <p><a asp-controller="Category" asp-action="Add">Add Category</a></p>

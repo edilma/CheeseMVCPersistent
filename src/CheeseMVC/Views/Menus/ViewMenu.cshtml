@@ -1,0 +1,19 @@
+﻿@model List<CheeseMVC.Models.CheeseMenu>
+
+@{
+    ViewData["Title"] = "Menu Name";
+}
+
+<h2>Menu Name</h2><!--Put here the value of the name for the menu-->
+<ul>
+    @foreach (var cheeseMenu in Model)
+    {
+        <li>
+            @cheeseMenu.Cheeses.Name
+        </li>
+    }
+</ul>
+<p>
+    <a asp-controller="Menu" asp-action="ViewMenu" asp-route-id=@Model.Menu.ID ></a>
+</p>
+
