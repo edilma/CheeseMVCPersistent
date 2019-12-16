@@ -32,13 +32,12 @@ namespace CheeseMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                Menu newMenu = new Menu
-                    ()
+                Menu newMenu = new Menu()
                     {
                     Name = addMenuViewModel.Name
-               };
-            context.Menu.Add(newMenu);
-            context.SaveChanges();
+                    };
+                context.Menu.Add(newMenu);
+                context.SaveChanges();
                 return Redirect("/Menu/ViewMenu" + newMenu.ID);
             }
             return View();
@@ -46,15 +45,15 @@ namespace CheeseMVC.Controllers
 
         public IActionResult ViewMenu(int id)
         {
-            Menu newMenu = context.Menu.Single(m => m.ID == id);
+            Menu menuToDisplay = context.Menu.Single(m => m.ID == id);
             List<CheeseMenu> items = context
-                .CheeseMenus
+                .CheeseMenu
                 .Include(item =>item.Cheese)
                 .Where(cm => cm.MenuID == id)
                 .ToList();
-            ViewMenuViewModel viewMenuViewModel = new ViewMenuViewModel()
+            ViewMenuViewModel viewMenuViewModel = new ViewMenuViewModel(items)
             {
-                Menu = newMenu,
+                Menu = menuToDisplay,
                 Items = items
             };
 

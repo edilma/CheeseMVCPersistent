@@ -1,19 +1,24 @@
-﻿@model List<CheeseMVC.Models.CheeseMenu>
+﻿@model CheeseMVC.ViewModels.ViewMenuViewModel
 
 @{
-    ViewData["Title"] = "Menu Name";
+    ViewBag.Title = "Menu Name";
 }
 
-<h2>Menu Name</h2><!--Put here the value of the name for the menu-->
+<h2>Menu @Html.DisplayNameFor(menu =>Model.Name) </h2><!--Put here the value of the name for the menu PAGE 6 with an model.title but doesn't work...-->
+
+
+
+
 <ul>
     @foreach (var cheeseMenu in Model)
     {
-        <li>
-            @cheeseMenu.Cheeses.Name
-        </li>
+    <li>
+        @cheeseMenu.Cheese.Name <!-- this is suppose to look like cheeseMenu.Cheeses.Name-->
+
+    </li>
     }
 </ul>
 <p>
-    <a asp-controller="Menu" asp-action="ViewMenu" asp-route-id=@Model.Menu.ID ></a>
+    <a asp-controller="Menu" asp-action="AddItem" asp-route-id=@Model.Menu.ID ></a> <!--TODO create the addItem action in the menu controller-->
 </p>
 

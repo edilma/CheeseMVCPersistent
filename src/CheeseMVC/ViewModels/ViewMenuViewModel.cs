@@ -13,14 +13,7 @@ namespace CheeseMVC.ViewModels
         
         public ViewMenuViewModel (List<CheeseMenu> items)
         {
-            foreach (CheeseMenu item in items)
-            {
-                Items.Add(new item
-                {
-                    Menu = item.MenuID.ToString(),
-                    Cheese = item.CheeseID.ToString()
-                });
-            }
+            Items = items;
         }
     }
 }
