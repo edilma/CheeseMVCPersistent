@@ -4,7 +4,7 @@
     ViewBag.Title = Model.Menu.Name;
 }
 
-<h2>Menu @Html.DisplayNameFor(menu =>Model.Menu.Name) </h2>
+<h2>Menu @Model.Menu.Name </h2>
 
 <ul>
     @foreach (var cheeseMenu in Model.Items)
@@ -16,6 +16,6 @@
     }
 </ul>
 <p>
-    <a asp-controller="Menu" asp-action="AddItem" asp-route-id=@Model.Menu.ID >ADD A CHEESE!</a> 
+    <a asp-controller="Menu" asp-action="AddItem" asp-route-id=@Model.Menu.ID >Add a Cheese!</a> 
 </p>
 

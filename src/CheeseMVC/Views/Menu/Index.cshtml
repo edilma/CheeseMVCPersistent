@@ -1,25 +1,25 @@
-﻿@model List<CheeseMVC.Models.CheeseMenu>
+﻿@model List<CheeseMVC.Models.Menu> 
     @{
         ViewData["Title"] = "Index";
     }
 
     <h2>Menu</h2>
 
-   @if (Model.Count==0)
-   {
-    <p>
-        No Menus Yet
-    </p>
+    @if (Model.Count == 0)
+    {
+        <p>
+            No Menus Yet
+        </p>
     }
 
     <ul>
         @foreach (var item in Model)
         {
 
-           <li><a asp-controller="Menu" asp-action="Index" asp-route-id="@item.MenuID"> @item.Menu.Name </a></li>
+            <li><a asp-controller="Menu" asp-action="ViewMenu" asp-route-id="@item.ID"> @item.Name </a></li>
         }
     </ul>
-<p>
-    <a asp-controller="Menu" asp-action="Add" >Add Menu</a> 
-</p>
+    <p>
+        <a asp-controller="Menu" asp-action="Add">Add Menu</a>
+    </p>
 
